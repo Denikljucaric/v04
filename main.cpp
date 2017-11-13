@@ -30,8 +30,7 @@ protected:
 		RECT screen;
 		GetClientRect(*this, &screen);
 		if (ship) {
-			int speed;
-			GetKeyState(VK_CONTROL) < 0 ? speed = FAST : speed= SLOW;
+			int speed=GetKeyState(VK_CONTROL) < 0 ? speed = FAST : speed= SLOW;
 			switch (vk) {
 			case VK_UP:shipPos.y = max(0, shipPos.y - speed); break;
 			case VK_DOWN:shipPos.y = min(screen.bottom - S_SIZE, shipPos.y + speed); break;
@@ -48,7 +47,6 @@ protected:
 private:
 	Static ship;
 	POINT shipPos;
-	
 };
 
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hp, LPSTR cmdLine, int nShow)
